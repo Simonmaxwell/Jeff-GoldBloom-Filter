@@ -12,25 +12,27 @@ public class TheAction {
 
         marathon(oldJeff);
 
-
-
         String movie = maxEatsBees.nextLine();
-        if (oldJeff.wasItWorthIt(movie)) {
+        String myMovie = spaghettiStrainer(movie);
+
+        if (oldJeff.wasItWorthIt(myMovie)) {
             System.out.println("Jeff Goldblum might have been in that movie. ");
         }
         else {
             System.out.println("Jeff Goldblum was not in that movie");
         }
 
-
-
-
     }
 
     private static void marathon(TheDirector director) {
         for (String movie : moviesWithGoldblum ) {
-            director.watchMyMovie(movie);
+            String sanitizedMovieName = spaghettiStrainer(movie);
+            director.watchMyMovie(sanitizedMovieName);
         }
+    }
+
+    private static String spaghettiStrainer(String movie) {
+        return movie.replaceAll("[^\\w]", "").toLowerCase();
     }
 
     private static String[] moviesWithGoldblum = {
